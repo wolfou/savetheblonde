@@ -3,6 +3,13 @@ Rails.application.routes.draw do
 
   get 'pages/contact'
 
+  get 'pages/partie1'
+  get 'pages/partie2'
+  get 'pages/partie3'
+  get 'pages/partie4'
+  get 'pages/partie5'
+
+
   resources :users
 
    root 'welcome#index'
