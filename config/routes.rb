@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
 
-  get 'pages/contact'
-
-  get 'pages/partie1'
-  get 'pages/partie2'
-  get 'pages/partie3'
-  get 'pages/partie4'
-  get 'pages/partie5'
-
+  root :to => 'pages#home'
+  get '/contact',   :to => 'pages#contact'
+  get '/partie1',   :to => 'pages#partie1'
+  get '/partie2',   :to => 'pages#partie2'
+  get '/partie3',   :to => 'pages#partie3'
+  get '/partie4',   :to => 'pages#partie4'
+  get '/partie5',   :to => 'pages#partie5'
 
   resources :users
 
-   root 'pages#home'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   end
 
   def partie3
-  	  	@titre = "niveau 3"
+    @titre = "niveau 3"
   end
 
   def partie4
