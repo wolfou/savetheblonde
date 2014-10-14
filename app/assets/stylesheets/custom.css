@@ -110,7 +110,6 @@ td.sidebar {
   width: 30%;
   padding: 1em;
   vertical-align: top;
-  background: #ffc;
 }
 
 .profile img.gravatar {
@@ -139,7 +138,6 @@ div.field, div.actions {
   padding: 7px;
   padding-bottom: 12px;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
 }
 
 #error_explanation h2 {
@@ -148,7 +146,6 @@ div.field, div.actions {
   padding: 5px 5px 5px 15px;
   font-size: 12px;
   margin: -7px;
-  background-color: #c00;
   color: #fff;
 }
 

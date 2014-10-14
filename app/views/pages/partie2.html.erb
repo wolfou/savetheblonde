@@ -1,6 +1,11 @@
 <h1>Niveau 2</h1>
+
 <canvas id="game" width="600" height="800">
 	<p lang="fr">Votre navigateur ne supporte pas la balise canvas.</p> <!-- Un petit message pour les dinosaures -->
 </canvas>
+<%= javascript_include_tag  '0quintusall.js' %>
+	<%= javascript_include_tag  'partie1.js' %>
+	<%= javascript_include_tag  'partie2.js' %>
+	<%= javascript_include_tag 'partie4.js' %>
 <p style="text-align: left"><%= link_to "← Partie 1", partie1_path %></p>
 <p style="text-align: right"><%= link_to "Partie  3→", partie3_path %></p>

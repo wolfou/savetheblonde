@@ -7,15 +7,12 @@
 	<%= render 'layouts/stylesheets' %>
 </head>
 <body>
-	<% javascript 'quintus-all.js' %>
-	<% javascript 'partie1.js' %>
-	<% javascript 'partie2.js' %>
-	<% javascript 'partie3.js' %>
-	<% javascript 'partie4.js' %>
-	<% javascript 'partie5.js' %>
 	<div class="container">
 		<%= render 'layouts/header' %>
 		<section class="round">
+			<% flash.each do |key, value| %>
+			<div class="flash <%= key %>"><%= value %></div>
+			<% end %>
 			<%= yield %>
 		</section>
 		<%= render 'layouts/footer' %>

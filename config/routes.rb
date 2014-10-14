@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
     
+  get 'sessions/new'
+
   root :to => 'pages#home'
 
   get '/contact',   :to => 'pages#contact'
@@ -13,8 +15,11 @@ Rails.application.routes.draw do
   get '/partie5',   :to => 'pages#partie5'
 
   get '/signup',    :to => 'users#new'
+  get '/signin',    :to => 'sessions#new'
+  get '/signout',   :to => 'sessions#destroy'
 
     resources :users
+    resources :sessions, :only => [:new, :create, :destroy]
   
 
 
