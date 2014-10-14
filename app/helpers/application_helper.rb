@@ -1,6 +1,10 @@
 module ApplicationHelper
 
   # Retourner un titre basé sur la page.
+  def logo
+  	 @logo = image_tag("savetheblonde.jpg", :alt => "Save the blonde", :class => "round") 
+  end
+
   def titre
   	base_titre = "Save the blonde"
   	if @titre.nil?

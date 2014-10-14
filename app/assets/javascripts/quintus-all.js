@@ -513,7 +513,7 @@ var Quintus = function Quintus(opts) {
 	 @for Quintus
 	*/
 	Q.options = {
-		imagePath: "",
+		imagePath: "images/",
 		audioPath: "audio/",
 		dataPath:  "data/",
 		audioSupported: [ 'mp3','ogg' ],

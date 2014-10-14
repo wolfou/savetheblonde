@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
 
+
+    
   root :to => 'pages#home'
+
   get '/contact',   :to => 'pages#contact'
+
   get '/partie1',   :to => 'pages#partie1'
   get '/partie2',   :to => 'pages#partie2'
   get '/partie3',   :to => 'pages#partie3'
   get '/partie4',   :to => 'pages#partie4'
   get '/partie5',   :to => 'pages#partie5'
 
-  resources :users
+  get '/signup',    :to => 'users#new'
+
+    resources :users
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.
