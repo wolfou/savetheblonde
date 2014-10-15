@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate, :only => [:index, :edit, :update]
+  before_filter :correct_user, :only => [:edit, :update]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.order('level').reverse
+    @titre = "Pantheon"
   end
 
   # GET /users/1
@@ -22,6 +24,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+     @user = User.new(user_params)
+     @titre = "Édition profil"
   end
 
   # POST /users
@@ -41,14 +45,13 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    @user = User.new(user_params)
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profil actualisé."
+      redirect_to @user
+    else
+      @titre = "Édition profil"
+      render 'edit'
     end
   end
 
@@ -65,11 +68,20 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find(user_params)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:nom, :email, :password, :password_confirmation)
+    end
+
+    def authenticate
+      deny_access unless signed_in?
+    end
+
+    def correct_user
+      @user = User.find(user_params)
+      redirect_to(root_path) unless current_user?(@user)
     end
   end

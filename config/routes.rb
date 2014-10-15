@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
 
-    
-  get 'sessions/new'
+  resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
 
-  root :to => 'pages#home'
+  get '/signout', :to => 'sessions#destroy'
+  get '/signup',  :to => 'users#new'
+  get '/signin',  :to => 'sessions#new'
+
 
   get '/contact',   :to => 'pages#contact'
 
@@ -14,12 +17,10 @@ Rails.application.routes.draw do
   get '/partie4',   :to => 'pages#partie4'
   get '/partie5',   :to => 'pages#partie5'
 
-  get '/signup',    :to => 'users#new'
-  get '/signin',    :to => 'sessions#new'
-  get '/signout',   :to => 'sessions#destroy'
+  root :to => 'pages#home'
 
-    resources :users
-    resources :sessions, :only => [:new, :create, :destroy]
+
+
   
 
 
