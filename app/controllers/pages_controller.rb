@@ -1,9 +1,10 @@
 class PagesController < ApplicationController
   before_filter :authenticate, :only => [:partie2, :partie3, :partie4, :partie5]
-  before_filter :check_level2, :only => [:partie2]
-  before_filter :check_level3, :only => [:partie3]
-  before_filter :check_level4, :only => [:partie4]
-  before_filter :check_level5, :only => [:partie5]
+  # before filter supprimés car la partie validation de partie réussi n'a pas été implémenté
+  # before_filter :check_level2, :only => [:partie2]
+  # before_filter :check_level3, :only => [:partie3]
+  # before_filter :check_level4, :only => [:partie4]
+  # before_filter :check_level5, :only => [:partie5]
 
   def home
   	@titre = "Accueil"

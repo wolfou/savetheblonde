@@ -10,6 +10,7 @@ Rails.application.config.assets.precompile += %w( partie3.js )
 Rails.application.config.assets.precompile += %w( partie4.js )
 Rails.application.config.assets.precompile += %w( partie5.js )
 Rails.application.config.assets.precompile += %w( partie6.js )
+Rails.application.config.assets.precompile += %w( partie7.js )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.

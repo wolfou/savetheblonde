@@ -31,7 +31,7 @@ Q.scene('startGame', function(stage) { // On crée une nouvelle scène que l'on 
 	var title = stage.insert(new Q.UI.Text({
 		x: Q.width/2,
 		y: 50,
-		label: 'Mon super jeu',
+		label: 'Save the Blonde ',
 		align: 'center',
 		family: 'Comic Sans MS, Comis Sans, cursive',
 		size: 48,

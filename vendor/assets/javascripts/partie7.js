@@ -1,11 +1,11 @@
 /* ---------------------- *
  *                        *
- *        Partie 3       *
+ *        Partie 5       *
  *                        *
  * ---------------------- */
 
 // Attention à ne pas utiliser cette méthode de chargement dans votre application, mais à inclure le fichier à la liste de la partie 2
-Q.load(['clouds.png', 'game-tiles.png', 'game4.json', 'player-sprite2.png', 'sheepfold-sprite.png', 'zombi-spirite.png'], function () {
+Q.load(['island.png', 'game-tiles.png', 'game6.json', 'player-sprite2.png', 'sheepfold-sprite.png', 'zombi-spirite.png'], function () {
 	console.log('Fichiers du niveau chargés');
 
 	Q.sheet('my_tiles', 'game-tiles.png', { tileW: 30, tileH: 30 }); // On crée des tiles
@@ -147,10 +147,10 @@ Q.Sprite.extend('Wolf', {
 Q.scene('game', function (stage) {
 	console.log('Niveau 1 !');
 
-	stage.insert(new Q.Repeater({ asset: 'clouds.png', speedY: 0.5 }));
+	stage.insert(new Q.Repeater({ asset: 'island.png', speedY: 0.5 }));
 
 	var tiles = new Q.TileLayer({
-		dataAsset: 'game4.json', // Nom du fichier tileset
+		dataAsset: 'game6.json', // Nom du fichier tileset
 		sheet: 'my_tiles', // Nom des tiles
 		tileW: Q.sheets['my_tiles'].tileW, // Dimensions des tiles : on va les chercher directement depuis la feuille que l'on a créée au chargement
 		tileH: Q.sheets['my_tiles'].tileH
@@ -166,13 +166,21 @@ Q.scene('game', function (stage) {
 	stage.add('viewport').follow(player, { x: false, y :true }, { minX:0, maxX: tiles.p.w, maxY: tiles.p.h} );
 
 	stage.insert(new Q.Sheepfold({
-		x: tiles.p.w - Q.sheets['my_sheepfold'].tileW/2,
-		y: Q.sheets['my_sheepfold'].tileW/2
+		x: tiles.p.w - Q.sheets['my_sheepfold'].tileW/4,
+		y: Q.sheets['my_sheepfold'].tileW/4
 	}));
 
 	stage.insert(new Q.Wolf({ x: tiles.p.w/2, y: tiles.p.h/2 }));
 
 	stage.insert(new Q.Wolf({ x: tiles.p.w/4, y: tiles.p.h - (player.p.cy + tiles.p.tileH) }));
+
+	stage.insert(new Q.Wolf({ x: tiles.p.w/8, y: tiles.p.h - (player.p.cy + tiles.p.tileH) }));
+
+	stage.insert(new Q.Wolf({ x: tiles.p.w/6, y: tiles.p.h - (player.p.cy + tiles.p.tileH) }));
+
+	stage.insert(new Q.Wolf({ x: tiles.p.w/12, y: tiles.p.h - (player.p.cy + tiles.p.tileH) }));
+
+	stage.insert(new Q.Wolf({ x: tiles.p.w/10, y: tiles.p.h - (player.p.cy + tiles.p.tileH) }));
 
 	stage.insert(new Q.Wolf({ x: tiles.p.w - Q.sheets['my_sheepfold'].tileW * 2, y: 0, vy: 100 })); // loups du bas
 
@@ -181,6 +189,8 @@ Q.scene('game', function (stage) {
 	stage.insert(new Q.Wolf({ x: tiles.p.w/2, y: tiles.p.h/3 }));
 
 	stage.insert(new Q.Wolf({ x: tiles.p.w/2, y: tiles.p.h/6 }));
+
+	
 
 });
 

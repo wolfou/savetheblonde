@@ -1,17 +1,17 @@
 /* ---------------------- *
  *                        *
- *        Partie 4       *
+ *        Partie 5       *
  *                        *
  * ---------------------- */
 
 // Attention à ne pas utiliser cette méthode de chargement dans votre application, mais à inclure le fichier à la liste de la partie 2
-Q.load(['Enfer.png', 'game-tiles2.png', 'game4.json', 'player-sprite2.png', 'sheepfold-sprite.png', 'wolf-sprite2.png'], function () {
+Q.load(['town2.png', 'game-tiles3.png', 'game6.json', 'player-sprite2.png', 'sheepfold-sprite.png', 'zombi-spirite.png'], function () {
 	console.log('Fichiers du niveau chargés');
 
-	Q.sheet('my_tiles', 'game-tiles2.png', { tileW: 30, tileH: 30 }); // On crée des tiles
+	Q.sheet('my_tiles', 'game-tiles3.png', { tileW: 30, tileH: 30 }); // On crée des tiles
 	Q.sheet('my_player', 'player-sprite2.png', { tileW: 25, tileH: 30 }); // On crée la feuille du joueur, qui permet de décomposer les états (pour l'animer par exemple)
 	Q.sheet('my_sheepfold', 'sheepfold-sprite.png', { tileW: 30, tileH: 30 });
-	Q.sheet('my_wolf', 'wolf-sprite2.png', { tileW: 30, tileH: 23 });
+	Q.sheet('my_wolf', 'zombi-spirite.png', { tileW: 30, tileH: 23 });
 
 	Q.animations('my_player', {
 		stand: { frames: [0], rate: 1/60, loop: true },
@@ -101,7 +101,7 @@ Q.Sprite.extend('Wolf', {
 
 		this.on('bump.left, bump.right, bump.bottom', function(collision) {
 			if(collision.obj.isA('Player')) {
-				Q.stageScene('endGame', 1, { label: 'Tu pu !' });
+				Q.stageScene('endGame', 1, { label: 'Tu as tué la blonde!' });
 				collision.obj.destroy();
 			}
 		});
@@ -147,10 +147,10 @@ Q.Sprite.extend('Wolf', {
 Q.scene('game', function (stage) {
 	console.log('Niveau 1 !');
 
-	stage.insert(new Q.Repeater({ asset: 'Enfer.png', speedY: 0.5 }));
+	stage.insert(new Q.Repeater({ asset: 'town2.png', speedY: 0.5 }));
 
 	var tiles = new Q.TileLayer({
-		dataAsset: 'game4.json', // Nom du fichier tileset
+		dataAsset: 'game6.json', // Nom du fichier tileset
 		sheet: 'my_tiles', // Nom des tiles
 		tileW: Q.sheets['my_tiles'].tileW, // Dimensions des tiles : on va les chercher directement depuis la feuille que l'on a créée au chargement
 		tileH: Q.sheets['my_tiles'].tileH
@@ -166,8 +166,8 @@ Q.scene('game', function (stage) {
 	stage.add('viewport').follow(player, { x: false, y :true }, { minX:0, maxX: tiles.p.w, maxY: tiles.p.h} );
 
 	stage.insert(new Q.Sheepfold({
-		x: tiles.p.w - Q.sheets['my_sheepfold'].tileW/2,
-		y: Q.sheets['my_sheepfold'].tileW/2
+		x: tiles.p.w - Q.sheets['my_sheepfold'].tileW/4,
+		y: Q.sheets['my_sheepfold'].tileW/4
 	}));
 
 	stage.insert(new Q.Wolf({ x: tiles.p.w/2, y: tiles.p.h/2 }));
